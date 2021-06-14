@@ -127,55 +127,6 @@ for data_item in data:
     parts:  [[62, 41, 64, 43, 61, 3, 16, 89, 30, 15, 59, 56, 2, 8, 33, 10, 0, 52, 57, 65, 73, 78, 63, 88, 58, 51, 31, 48, 53, 36, 69, 22, 40, 13, 60, 39, 77, 80, 24, 66, 70, 46, 71, 54, 74, 49, 4], [42, 55, 19, 35, 81, 47, 21, 11, 38, 83, 67, 84, 50, 37, 34, 87, 25, 45, 20, 79, 1, 17, 26, 76, 75, 85, 5, 29, 44, 9, 7, 12, 14, 86, 28, 82, 32, 27, 18, 72, 6, 68, 23]]
     machines:  [[0, 2, 13, 25, 26, 27, 28], [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 29]]
     core function value:  0.0622154779969651
-    
-    
-
-
-    ---------------------------------------------------------------------------
-
-    TypeError                                 Traceback (most recent call last)
-
-    <ipython-input-8-93ea69dacef1> in <module>
-          4                                    exchange_period, max_stagnant)
-          5     start = time.time()
-    ----> 6     solution = algorithm.compute()
-          7     elapsed = time.time() - start
-          8     print('benchmark #', counter)
-    
-
-    ~\operations algorithms\simulated_annealing\simulated_annealing.py in compute(self)
-        290         self.best_solution = self.best_solution_current_cells
-        291         self.optimal_cells = self.current_cells
-    --> 292         self.search_with_current_cells()
-        293         while core_function(*self.best_solution_current_cells, self.data) > core_function(*self.best_solution, self.data):
-        294             self.best_solution = self.best_solution_current_cells
-    
-
-    ~\operations algorithms\simulated_annealing\simulated_annealing.py in search_with_current_cells(self)
-        273             self.current_solution = initial_solution(self.data, self.current_cells)
-        274             self.best_solution_current_cells = self.current_solution
-    --> 275         self.temperature_iteration()
-        276         while not (self.temperature <= self.final_temperature or self.counter_stagnant > self.max_stagnant):
-        277             self.temperature *= self.cooling_rate
-    
-
-    ~\operations algorithms\simulated_annealing\simulated_annealing.py in temperature_iteration(self)
-        244             neighborhood_solution = self.single_move(self.current_solution)
-        245             if self.counter % self.exchange_period == 0:
-    --> 246                 neighborhood_solution = self.exchange_move(neighborhood_solution)
-        247             neighborhood_solution_function_value = core_function(*neighborhood_solution, self.data)
-        248             best_solution_current_cells_function_value = core_function(*self.best_solution_current_cells, self.data)
-    
-
-    ~\operations algorithms\simulated_annealing\simulated_annealing.py in exchange_move(self, solution)
-        212 
-        213     def exchange_move(self, solution):
-    --> 214         parts, machines = deepcopy(solution)
-        215         length = 1
-        216         while (length < 2):
-    
-
-    TypeError: cannot unpack non-iterable NoneType object
 
 
 
